@@ -8,12 +8,18 @@ function App() {
   // cantidad tendrá el valor que sea el state
   // guardarCantidad es la función para guardar o modificar el state
   const [cantidad, guardarCantidad] = useState(0);
+  const [plazo, guardarPlazo] = useState('');
 
   return (
     <Fragment>
       <Header titulo="Cotizador de Préstamos" />
       <div className="container">
-        <Formulario cantidad={cantidad} guardarCantidad={guardarCantidad} />
+        <Formulario
+          cantidad={cantidad}
+          guardarCantidad={guardarCantidad}
+          plazo={plazo}
+          guardarPlazo={guardarPlazo}
+        />
       </div>
     </Fragment>
   );
