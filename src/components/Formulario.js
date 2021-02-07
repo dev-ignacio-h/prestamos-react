@@ -1,4 +1,5 @@
 import { useState, Fragment } from 'react';
+import { calcularTotal } from '../helpers';
 
 const Formulario = ({ cantidad, guardarCantidad, plazo, guardarPlazo }) => {
   // definir state para mensaje de error
@@ -11,14 +12,14 @@ const Formulario = ({ cantidad, guardarCantidad, plazo, guardarPlazo }) => {
     // validar
     if (cantidad === 0 || plazo === '') {
       guardarError(true);
-      return
+      return;
     } else {
       // eliminar error
       guardarError(false);
     }
 
     // realizar la cotización
-    console.log('Enviando formulario...');
+    calcularTotal(cantidad, plazo);
   };
   return (
     <Fragment>
