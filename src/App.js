@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 import Formulario from './components/Formulario';
 import Header from './components/Header';
 import { useState } from 'react';
+import Mensaje from './components/Mensaje';
+import Resultado from './components/Resultado';
 
 function App() {
   // Definir el state
@@ -10,6 +12,13 @@ function App() {
   const [cantidad, guardarCantidad] = useState(0);
   const [plazo, guardarPlazo] = useState('');
   const [total, guardarTotal] = useState(0);
+
+  let componente;
+  if (total === 0) {
+    componente = <Mensaje />;
+  } else {
+    componente = <Resultado total={total} plazo={plazo} cantidad={cantidad} />;
+  }
 
   return (
     <Fragment>
@@ -23,7 +32,7 @@ function App() {
           total={guardarTotal}
           guardarTotal={guardarTotal}
         />
-        <p>Total a pagar: $ {total}</p>
+        <div className="mensajes">{componente}</div>
       </div>
     </Fragment>
   );
